@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>浏览器对象</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gkb"/>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding: 0;
+        }
+        #title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<!--先编写好网页布局-->
+    <p id="title">操作成功</p>
+    <span id="data">5秒返回到主页</span>
+    <a id="return"  href="http://www.baidu.com">返回</a>
+
+<script type="text/javascript">
+    var seconds = 5;
+    var id_time2 = setTimeout("count()", 1000);
+    function count()
+    {
+        document.getElementById("data").innerHTML = seconds + "秒返回到主页";
+        seconds -= 1;
+        var id_time1 = setTimeout("count()", 1000);
+        if(seconds == 0) {
+            clearTimeout(id_time1);
+            clearTimeout(id_time2);
+            window.history.go(window.location.href);
+        }
+    }
+
+    //获取显示秒数的元素，通过定时器来更改秒数。
+
+
+    //通过window的location和history对象来控制网页的跳转。
+
+</script>
+</body>
+</html>
