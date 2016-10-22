@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>DOM0级事件处理程序</title>
+</head>
+<body>
+<div>
+    <h2>DOM0级事件处理程序</h2>
+    <p>
+        &nbsp;&nbsp;较传统的一种方式：把一个函数赋值给一个事件处理程序属性<br />
+        &nbsp;&nbsp;用的比较多<br />
+        &nbsp;&nbsp;简单<br />
+        &nbsp;&nbsp;跨浏览器<br />
+    </p>
+    <input type="button" value="按钮2" id="btn2">
+</div>
+    <script>
+      var btn2 = document.getElementById("btn2");
+        btn2.onclick = function() {
+            alert("DOM0级事件处理程序");
+        }
+        btn.onclick = null;
+    </script>
+</body>
+</html>

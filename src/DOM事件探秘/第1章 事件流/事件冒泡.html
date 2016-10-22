@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>事件冒泡</title>
+</head>
+<body>
+<div id="main">
+    <p>本章内容</p>
+    <ul>
+        <li>1.理解事件流</li>
+        <li>2.使用事件处理程序</li>
+        <li>3.不同类型的事件</li>
+    </ul>
+    <p>知识点详解</p>
+    <ul>
+        <li>
+            事件冒泡：
+            <ul>
+                <li>即事件先被最具体的元素（文档中嵌套的最深的那个节点）接收，然后逐级传递到最不具体的元素的一个过程</li>
+                <li>代表：IE</li>
+            </ul>
+        </li>
+        <li>
+            事件捕获：
+            <ul>
+                <li>不太具体的节点应该最先接收到事件，具体的节点最后接收到事件</li>
+                <li>代表：IE</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div id="data">
+    <input type="button" value="按钮" id="btn">
+</div>
+</body>
+</html>

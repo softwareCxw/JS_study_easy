@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>IE事件处理程序及跨浏览器解决</title>
+</head>
+<body>
+    <div>
+       <h2>IE事件处理程序及跨浏览器解决</h2>
+        <p>
+            attachEvent(): 添加事件<br />
+            detachEvent()：删除事件<br />
+            参数：事件处理程序的名称和事件处理程序的函数<br />
+        </p>
+        <input type="button" value="按钮", id="btn4">
+    </div>
+    <div>
+        <h3>跨浏览器事件解决</h3>
+    </div>
+<script>
+    function showMsg() {
+        alert("hello world");
+    }
+    var btn4 = document.getElementById("btn4");
+    //btn4.attachEvent('onclick', showMsg);
+    //btn4.detachEvent('onclick', showMsg);
+
+    //跨浏览器事件解决
+    var eventUtil = {
+        //添加句柄
+        addHandler:function(element, type, handler){
+            if(element.addEventListener) {
+                element.addEventListener(type, handler, false);
+            } else if(element.attachEvent) {
+                element.attachEvent("on" + type, handler);
+            } else {
+                element["on" + type] = handler;
+            }
+        },
+        //删除句柄
+        removeHandler:function(element, type, handler){
+            if(element.removeEventListener) {
+                element.removeEventListener(type, handler, false);
+            } else if(element.detachEvent) {
+                element.detachEvent("on" + type, handler);
+            } else {
+                element["on" + type] = null;
+            }
+        }
+    }
+    eventUtil.addHandler(btn4, 'click', showMsg);
+    eventUtil.removeHandler(btn4, 'click', showMsg);
+</script>
+</body>
+</html>
