@@ -2,35 +2,35 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title> 3-1 DOM中的事件对象</title>
+    <title> 3-2 IE中的事件对象</title>
 </head>
 <body>
 <div>
-    <h2> 3-1 DOM中的事件对象</h2>
+    <h2> 3-2 IE中的事件对象</h2>
     <p>一.简介<br /></p>
     <p>&nbsp;事件对象：在触发DOM上的事件时都会产生一个对象</p>
     <ul>
-        1.DOM中的事件对象
+        1.IE中的事件对象
         <li>(1)、type属性：获取事件类型</li>
-        <li>(2)、target属性：获取事件目标</li>
-        <li>(3)、stopPropagation()：阻止事件冒泡</li>
-        <li>(4)、preventDefault()：阻止默认行为</li>
+        <li>(2)、srcElement：获取事件目标</li>
+        <li>(3)、cancelBubble：阻止事件冒泡</li>
+        <li>(4)、returnValue：阻止默认行为</li>
     </ul>
 </div>
 
 <div id="box">
     <p>实践：<br /></p>
 </div>
-    <input type="button" value="返回事件类型 " onclick="ReturnEventType()" id="btn0">
-    <input type="button" value="返回事件目标" onclick="returnEventTarget()" id="btn1">
-    <hr>
-    <div id="id_box_stopPropagaation">
-        <input type="button" value="未使用stopPropagation()" onclick="fc_unused" id="id_unused">
-        <input type="button" value="使用stopPropagation()" onclick="fc_used" id="id_use">
-    </div>
-    <hr>
-    <a href="http://www.cxw.asia" id="id_unuse_prevent" target="view_window">未使用preventDefault</a>
-    <a href="http://www.cxw.asia" id="id_use_prevent">使用preventDefault</a>
+<input type="button" value="返回事件类型 " onclick="ReturnEventType()" id="btn0">
+<input type="button" value="返回事件目标" onclick="returnEventTarget()" id="btn1">
+<hr>
+<div id="id_box_stopPropagaation">
+    <input type="button" value="未使用cancelBubble" onclick="fc_unused" id="id_unused">
+    <input type="button" value="使用cancelBubble" onclick="fc_used" id="id_use">
+</div>
+<hr>
+<a href="http://www.cxw.asia" id="id_unuse_prevent" target="view_window">未使用returnValue</a>
+<a href="http://www.cxw.asia" id="id_use_prevent">使用returnValue</a>
 <script>
     //跨浏览器事件解决
     var eventUtil = {
@@ -65,7 +65,12 @@
 
     function ReturnEventTarget(event)
     {
-        alert("事件目标：" + event.target + "\n" + "事件目标节点名：" + event.target.nodeName);
+        alert("事件目标：" + event.srcElement + "\n" + "事件目标节点名：" + event.srcElement.nodeName);
+    }
+
+    function fc_boxMain(event)
+    {
+        alert("父盒子");
     }
 
     function fc_unused(event)
@@ -76,7 +81,7 @@
     function fc_used(event)
     {
         alert(event.type);
-        event.stopPropagation();
+        event.cancelBubble = true;
     }
 
     function fc_unused_prevent(event)
@@ -86,7 +91,7 @@
 
     function fc_used_prevent(event)
     {
-        event.preventDefault();
+        event.returnValue = false;
     }
 
     var returnEventType = document.getElementById("btn0");
@@ -95,7 +100,7 @@
     eventUtil.addHandler(returnEventTarget, 'click', ReturnEventTarget);
 
     var v_boxMain = document.getElementById("id_box_stopPropagaation");
-    eventUtil.addHandler(v_boxMain, 'click', fc_unused);
+    eventUtil.addHandler(v_boxMain, 'click', fc_boxMain);
 
     var v_unuse = document.getElementById("id_unused");
     eventUtil.addHandler(v_unuse, 'click', fc_unused);
