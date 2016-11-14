@@ -25,6 +25,13 @@
             // 点击三角时
             title.onclick=function(event){
                 // 执行脚本
+                event = event || window.event;
+                if(event.stopPropagation) {
+                    event.stopPropagation();
+                } else {
+                    event.cancelBubble = true;
+                }
+
                menu.style.display = "inline";
             }
 
