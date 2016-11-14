@@ -15,9 +15,9 @@ window.onload=drag;
 
 function drag(){
    var oTitle=getByClass('login_logo_webqq','loginPanel')[0];
-   // 拖曳
+   //拖曳
    oTitle.onmousedown=fnDown;
-   // 关闭
+   //关闭
    var oClose=document.getElementById('ui_boxyClose');
    oClose.onclick=function(){
    	  document.getElementById('loginPanel').style.display='none';
@@ -69,7 +69,7 @@ function drag(){
 function fnDown(event){
   event = event || window.event;
   var oDrag=document.getElementById('loginPanel'),
-      // 光标按下时光标和面板之间的距离
+      //光标按下时光标和面板之间的距离
       disX=event.clientX-oDrag.offsetLeft,
       disY=event.clientY-oDrag.offsetTop;
   // 移动
