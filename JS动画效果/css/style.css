@@ -1,0 +1,23 @@
+*{
+    margin:0;
+    padding: 0;
+    font-family: "微软雅黑";
+    text-indent: 20px;
+}
+#body {
+    width: 1000px;
+    height: 500px;
+}
+
+cite {
+    width:200px;
+    height: 40px;
+    margin:0 auto;
+    font-style: inherit;
+    font-size:20px;
+    font-weight: bold;
+}
+
+li {
+    font-size:15px;
+}
