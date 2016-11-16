@@ -1,0 +1,17 @@
+*{
+    margin:0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+}
+
+li{
+    width: 200px;
+    height: 100px;
+    background-color: #ffff00;
+    margin-bottom: 20px;
+    opacity:0.3;
+    filter:alpha(opacity:30);
+    border:4px solid #000000;
+}
